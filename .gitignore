@@ -3,3 +3,8 @@
 ################################################################################
 
 /GridAlignmentAndMargins/GridAlignmentAndMargins/Bin/Debug
+/GridAlignmentAndMargins/GridAlignmentAndMargins/obj/Debug
+*.suo
+/XAMLResources/XAMLResources/Bin/Debug
+/XAMLResources/XAMLResources/obj/Debug
+/XAMLResources

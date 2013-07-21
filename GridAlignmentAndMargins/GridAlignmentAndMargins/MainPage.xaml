@@ -19,35 +19,26 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <!-- LOCALIZATION NOTE:
-            To localize the displayed strings copy their values to appropriately named
-            keys in the app's neutral language resource file (AppResources.resx) then
-            replace the hard-coded text value between the attributes' quotation marks
-            with the binding clause whose path points to that string name.
-
-            For example:
-
-                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
-
-            This binding points to the template's string resource named "ApplicationTitle".
-
-            Adding supported languages in the Project Properties tab will create a
-            new resx file per language that can carry the translated values of your
-            UI strings. The binding in these examples will cause the value of the
-            attributes to be drawn from the .resx file that matches the
-            CurrentUICulture of the app at run time.
-         -->
-
+        
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="Grid Alignment and Margins" FontSize="34" HorizontalAlignment="Center"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
+            <!-- Alignments -->
+            <Rectangle Fill="Red" Height="100" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"></Rectangle>
+            <Rectangle Fill="Yellow" Height="100" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom"></Rectangle>
+            <Rectangle Fill="Green" Height="100" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom"></Rectangle>
+            <Rectangle Fill="Blue" Height="100" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top"></Rectangle>
+            <Rectangle Fill="Orange" Height="100" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center"></Rectangle>
+            
+            <!--Margins-->
+            <Rectangle Fill="White" Height="100" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,100"></Rectangle>
+            <Rectangle Fill="White" Height="100" Width="100" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="100,100"></Rectangle>
+            <Rectangle Fill="White" Height="100" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="100,100"></Rectangle>
+            <Rectangle Fill="White" Height="100" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="100,100"></Rectangle>
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
