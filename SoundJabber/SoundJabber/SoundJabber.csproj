@@ -105,6 +105,9 @@
     </Compile>
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\SoundData.cs" />
+    <Compile Include="ViewModels\SoundGroup.cs" />
+    <Compile Include="ViewModels\SoundModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
