@@ -134,6 +134,52 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Audio\Animals\Cat Kitten.wav" />
+    <Content Include="Assets\Audio\Animals\Cat Meow.wav" />
+    <Content Include="Assets\Audio\Animals\Chimpanzee.wav" />
+    <Content Include="Assets\Audio\Animals\Cow.wav" />
+    <Content Include="Assets\Audio\Animals\Crickets.wav" />
+    <Content Include="Assets\Audio\Animals\Dog.wav" />
+    <Content Include="Assets\Audio\Animals\Dolphin.wav" />
+    <Content Include="Assets\Audio\Animals\Duck.wav" />
+    <Content Include="Assets\Audio\Animals\Horse Gallop.wav" />
+    <Content Include="Assets\Audio\Animals\Horse Walk.wav" />
+    <Content Include="Assets\Audio\Animals\Lion.wav" />
+    <Content Include="Assets\Audio\Animals\Pig.wav" />
+    <Content Include="Assets\Audio\Animals\Rooster.wav" />
+    <Content Include="Assets\Audio\Animals\Sheep.wav" />
+    <Content Include="Assets\Audio\Cartoons\Boing.wav" />
+    <Content Include="Assets\Audio\Cartoons\Bronk.wav" />
+    <Content Include="Assets\Audio\Cartoons\Bugle charge.wav" />
+    <Content Include="Assets\Audio\Cartoons\Laser.wav" />
+    <Content Include="Assets\Audio\Cartoons\Out Here.wav" />
+    <Content Include="Assets\Audio\Cartoons\Splat.wav" />
+    <Content Include="Assets\Audio\Taunts\Cackle.wav" />
+    <Content Include="Assets\Audio\Taunts\Clock Ticking.wav" />
+    <Content Include="Assets\Audio\Taunts\Dial up.wav" />
+    <Content Include="Assets\Audio\Taunts\Drum roll.wav" />
+    <Content Include="Assets\Audio\Taunts\Elevator Music.wav" />
+    <Content Include="Assets\Audio\Taunts\Laugh - Evil.wav" />
+    <Content Include="Assets\Audio\Taunts\Laugh.wav" />
+    <Content Include="Assets\Audio\Taunts\Sad Trombone.wav" />
+    <Content Include="Assets\Audio\Taunts\Sarcastic Ooo.wav" />
+    <Content Include="Assets\Audio\Taunts\Sigh.wav" />
+    <Content Include="Assets\Audio\Taunts\Snore.wav" />
+    <Content Include="Assets\Audio\Taunts\Wrong Price.wav" />
+    <Content Include="Assets\Audio\Taunts\Yawn.wav" />
+    <Content Include="Assets\Audio\Warnings\Air horn.wav" />
+    <Content Include="Assets\Audio\Warnings\Air Raid.wav" />
+    <Content Include="Assets\Audio\Warnings\Alarm Clock - Bell.wav" />
+    <Content Include="Assets\Audio\Warnings\Alarm Clock - Electric.wav" />
+    <Content Include="Assets\Audio\Warnings\Backing up.wav" />
+    <Content Include="Assets\Audio\Warnings\Bell - Church.wav" />
+    <Content Include="Assets\Audio\Warnings\Bell - School.wav" />
+    <Content Include="Assets\Audio\Warnings\Fog horn.wav" />
+    <Content Include="Assets\Audio\Warnings\Glass breaking.wav" />
+    <Content Include="Assets\Audio\Warnings\Missle alert.wav" />
+    <Content Include="Assets\Audio\Warnings\Police - UK.wav" />
+    <Content Include="Assets\Audio\Warnings\Police - US.wav" />
+    <Content Include="Assets\Audio\Warnings\Vuvuzela.wav" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
