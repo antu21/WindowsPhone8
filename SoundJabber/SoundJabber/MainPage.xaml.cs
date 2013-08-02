@@ -34,6 +34,11 @@ namespace SoundJabber
             }
         }
 
+        private void LongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{

@@ -21,7 +21,7 @@ namespace SoundJabber.ViewModels
             Cartoons = CreateCartoonsGroup();
             Taunts = CreateTauntsGroup();
             Warnings = CreateWarningsGroup();
-            CustomSounds = CreateCustomSoundsGroup();
+            //CustomSounds = CreateCustomSoundsGroup();
 
             IsDataLoaded = true;
         }
@@ -253,7 +253,7 @@ namespace SoundJabber.ViewModels
         private SoundGroup CreateAnimalsGroup()
         {
             SoundGroup data = new SoundGroup();
-            data.Title = "animals";
+            data.Title = "animals12";
             string basePath = "assets/audio/animals/";
             string tileImageBasePath = "assets/tileImages/animals/";
 
