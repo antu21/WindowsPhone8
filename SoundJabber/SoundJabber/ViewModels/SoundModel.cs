@@ -9,6 +9,8 @@ namespace SoundJabber.ViewModels
         public SoundGroup CustomSounds { get; set; }
         public SoundGroup Taunts { get; set; }
 
+        public const string CustomSoundKey = "CustomSound";
+
         public bool IsDataLoaded
         {
             get;

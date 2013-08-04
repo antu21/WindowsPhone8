@@ -61,6 +61,15 @@ namespace SoundJabber.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string AppBarAboutMenuItemText {
+            get {
+                return ResourceManager.GetString("AppBarAboutMenuItemText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to add.
         /// </summary>
         public static string AppBarButtonText {
@@ -75,6 +84,24 @@ namespace SoundJabber.Resources {
         public static string AppBarMenuItemText {
             get {
                 return ResourceManager.GetString("AppBarMenuItemText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Record.
+        /// </summary>
+        public static string AppBarRecordButtonText {
+            get {
+                return ResourceManager.GetString("AppBarRecordButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string AppBarSaveButtonText {
+            get {
+                return ResourceManager.GetString("AppBarSaveButtonText", resourceCulture);
             }
         }
         
@@ -102,15 +129,6 @@ namespace SoundJabber.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sample Runtime Property Value.
-        /// </summary>
-        public static string SampleProperty {
-            get {
-                return ResourceManager.GetString("SampleProperty", resourceCulture);
             }
         }
     }

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+﻿using Coding4Fun.Toolkit.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using SoundJabber.Resources;
+using System;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace SoundJabber
 {
@@ -22,7 +19,7 @@ namespace SoundJabber
             DataContext = App.ViewModel;
 
             // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
+            BuildLocalizedApplicationBar();
         }
 
         // Load data for the ViewModel Items
@@ -39,20 +36,32 @@ namespace SoundJabber
 
         }
 
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
+        private void BuildLocalizedApplicationBar()
+        {
+            // Set the page's ApplicationBar to a new instance of ApplicationBar.
+            ApplicationBar = new ApplicationBar();
 
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
+            // Create a new button and set the text value to the localized string from AppResources.
+            ApplicationBarIconButton recordButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/microphone.png", UriKind.Relative));
+            recordButton.Text = AppResources.AppBarRecordButtonText;
+            recordButton.Click += recordButton_Click;
+            ApplicationBar.Buttons.Add(recordButton);
 
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
+            // Create a new menu item with the localized string from AppResources.
+            ApplicationBarMenuItem aboutMenuItem = new ApplicationBarMenuItem(AppResources.AppBarAboutMenuItemText);
+            aboutMenuItem.Click += aboutMenuItem_Click;
+            ApplicationBar.MenuItems.Add(aboutMenuItem);
+        }
+
+        void aboutMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutPrompt aboutMe = new AboutPrompt();
+            aboutMe.Show("Prasad Honrao", "PrasadHonrao", "Honrao.Prasad@hotmail.com", "http://PrasadHonrao.com");
+        }
+
+        void recordButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/RecordAudio.xaml", UriKind.Relative));
+        }
     }
 }
