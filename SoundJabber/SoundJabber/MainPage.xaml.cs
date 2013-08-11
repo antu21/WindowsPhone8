@@ -2,7 +2,10 @@
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using SoundJabber.Resources;
+using SoundJabber.ViewModels;
 using System;
+using System.IO;
+using System.IO.IsolatedStorage;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -33,7 +36,38 @@ namespace SoundJabber
 
         private void LongListSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            LongListSelector selector = sender as LongListSelector;
+            if (selector == null)
+                return;
 
+            SoundData data = selector.SelectedItem as SoundData;
+            if (data == null)
+                return;
+
+            if (File.Exists(data.FilePath))
+            {
+                AudioPlayer.Source = new Uri(data.FilePath, UriKind.RelativeOrAbsolute);
+            }
+            else
+            {
+                try
+                {
+                    using (var storageFolder = IsolatedStorageFile.GetUserStoreForApplication())
+                    {
+                        using (var stream = new IsolatedStorageFileStream(data.FilePath, FileMode.Open, storageFolder))
+                        {
+                            AudioPlayer.SetSource(stream);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string s = ex.Message;
+                }
+            }
+
+            // to replay the sound if same tile click multiple times
+            selector.SelectedItem = null;
         }
 
         private void BuildLocalizedApplicationBar()
@@ -63,5 +97,18 @@ namespace SoundJabber
         {
             NavigationService.Navigate(new Uri("/RecordAudio.xaml", UriKind.Relative));
         }
+
+
+
+        private void Pin_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
