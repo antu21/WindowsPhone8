@@ -71,7 +71,6 @@ namespace SoundJabber
                 IsolatedStorageSettings.ApplicationSettings[SoundModel.CustomSoundKey] = data;
                 IsolatedStorageSettings.ApplicationSettings.Save();
 
-
                 NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
             }
 
@@ -84,6 +83,18 @@ namespace SoundJabber
             RotateAudioGrid.Begin();
 
             recorder.Start();
+        }
+
+        private void RecordToggleButton_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        {
+            recorder.Stop();
+
+            RotateAudioGrid.Stop();
+
+            SaveAudioFile(recorder.Buffer);
+
+            PlayAudioButton.IsEnabled = true;
+            ApplicationBar.IsVisible = true;
         }
 
         private void SaveAudioFile(System.IO.MemoryStream buffer)
@@ -114,18 +125,6 @@ namespace SoundJabber
                 audioStream.Write(bytes, 0, bytes.Length);
                 AudioPlayer.SetSource(audioStream);
             }
-        }
-
-        private void RecordToggleButton_Unchecked(object sender, System.Windows.RoutedEventArgs e)
-        {
-            recorder.Stop();
-
-            RotateAudioGrid.Stop();
-
-            SaveAudioFile(recorder.Buffer);
-
-            PlayAudioButton.IsEnabled = true;
-            ApplicationBar.IsVisible = true;
         }
 
         private void PlayAudioButton_Click(object sender, System.Windows.RoutedEventArgs e)

@@ -1,4 +1,6 @@
 ﻿
+using Newtonsoft.Json;
+using System.IO.IsolatedStorage;
 namespace SoundJabber.ViewModels
 {
     public class SoundModel
@@ -23,14 +25,27 @@ namespace SoundJabber.ViewModels
             Cartoons = CreateCartoonsGroup();
             Taunts = CreateTauntsGroup();
             Warnings = CreateWarningsGroup();
-            //CustomSounds = CreateCustomSoundsGroup();
+            CustomSounds = LoadCustomSounds();
 
             IsDataLoaded = true;
         }
 
-        private SoundGroup CreateCustomSoundsGroup()
+        private SoundGroup LoadCustomSounds()
         {
-            throw new System.NotImplementedException();
+            SoundGroup data;
+            string dataFromAppSettings;
+
+            if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CustomSoundKey, out dataFromAppSettings))
+            {
+                data = JsonConvert.DeserializeObject<SoundGroup>(dataFromAppSettings);
+            }
+            else
+            {
+                data = new SoundGroup();
+                data.Title = "mine";
+            }
+
+            return data;
         }
 
         private SoundGroup CreateWarningsGroup()

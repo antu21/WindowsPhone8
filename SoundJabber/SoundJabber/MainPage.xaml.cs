@@ -25,7 +25,6 @@ namespace SoundJabber
             BuildLocalizedApplicationBar();
         }
 
-        // Load data for the ViewModel Items
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (!App.ViewModel.IsDataLoaded)
@@ -98,8 +97,6 @@ namespace SoundJabber
             NavigationService.Navigate(new Uri("/RecordAudio.xaml", UriKind.Relative));
         }
 
-
-
         private void Pin_Click(object sender, System.Windows.RoutedEventArgs e)
         {
 
@@ -107,8 +104,18 @@ namespace SoundJabber
 
         private void Delete_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            LongListSelector selector = sender as LongListSelector;
+            if (selector == null)
+                return;
 
+            SoundData data = selector.SelectedItem as SoundData;
+            if (data == null)
+                return;
+
+            if (File.Exists(data.FilePath))
+            {
+                File.Delete(data.FilePath);
+            }
         }
-
     }
 }

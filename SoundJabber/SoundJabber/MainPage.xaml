@@ -46,6 +46,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <MediaElement Name="AudioPlayer" Volume="1"/>
+        
         <!--Pivot Control-->
         <phone:Pivot Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}">
 
@@ -86,6 +87,18 @@
             <phone:PivotItem Header="Warnings">
                 <phone:LongListSelector Margin="0,0,-12,0" 
                                         ItemsSource="{Binding Warnings.Items}"
+                                        LayoutMode="Grid"
+                                        GridCellSize="150,150"
+                                        ItemTemplate="{StaticResource SoundTileDataTemplate}"
+                                        SelectionChanged="LongListSelector_SelectionChanged"
+                                        >
+                </phone:LongListSelector>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="{Binding CustomSounds.Title}">
+                <!--Double line list with text wrapping-->
+                <phone:LongListSelector Margin="0,0,-12,0" 
+                                        ItemsSource="{Binding CustomSounds.Items}"
                                         LayoutMode="Grid"
                                         GridCellSize="150,150"
                                         ItemTemplate="{StaticResource SoundTileDataTemplate}"
