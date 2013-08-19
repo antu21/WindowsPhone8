@@ -1,6 +1,7 @@
 ﻿using Coding4Fun.Toolkit.Controls;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Newtonsoft.Json;
 using SoundJabber.Resources;
 using SoundJabber.ViewModels;
 using System;
@@ -13,6 +14,9 @@ namespace SoundJabber
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        public const string CustomSoundKey = "CustomSound";
+        public SoundData CurrentItem { get; set; }
+
         // Constructor
         public MainPage()
         {
@@ -41,7 +45,14 @@ namespace SoundJabber
 
             SoundData data = selector.SelectedItem as SoundData;
             if (data == null)
+            {
                 return;
+            }
+            else
+            {
+                // store it for context menu
+                this.CurrentItem = data;
+            }
 
             if (File.Exists(data.FilePath))
             {
@@ -104,11 +115,28 @@ namespace SoundJabber
 
         private void Delete_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            LongListSelector selector = sender as LongListSelector;
-            if (selector == null)
-                return;
+            SoundData data = (sender as MenuItem).DataContext as SoundData;
+            SoundGroup group = null;
 
-            SoundData data = selector.SelectedItem as SoundData;
+            string dataFromAppSettings;
+
+            if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CustomSoundKey, out dataFromAppSettings))
+            {
+                group = JsonConvert.DeserializeObject<SoundGroup>(dataFromAppSettings);
+            }
+
+            foreach (var item in group.Items)
+            {
+                if (data.Title.Equals(item.Title))
+                {
+                    // Delete file here...
+                    group.Items.Remove(item);
+                    break;
+                }
+            }
+
+            App.ViewModel.CustomSounds.Items.Remove(data);
+
             if (data == null)
                 return;
 
