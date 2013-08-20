@@ -129,21 +129,27 @@ namespace SoundJabber
             {
                 if (data.Title.Equals(item.Title))
                 {
-                    // Delete file here...
-                    group.Items.Remove(item);
-                    break;
+
+                    IsolatedStorageSettings.ApplicationSettings.Clear();
+                    //foreach (var item in IsolatedStorageSettings.ApplicationSettings.)
+                    //{
+
+                    //}
+
+                    using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
+                    {
+                        if (isoStore.FileExists(item.FilePath))
+                        {
+                            isoStore.DeleteFile(item.FilePath);
+                            //App.ViewModel.CustomSounds.Items.Remove(item);
+                            App.ViewModel.CustomSounds.Items.Clear();
+                            break;
+                        }
+                    }
                 }
             }
 
-            App.ViewModel.CustomSounds.Items.Remove(data);
-
-            if (data == null)
-                return;
-
-            if (File.Exists(data.FilePath))
-            {
-                File.Delete(data.FilePath);
-            }
+            App.ViewModel.LoadData();
         }
     }
 }
