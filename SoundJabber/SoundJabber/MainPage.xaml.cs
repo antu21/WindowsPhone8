@@ -151,5 +151,17 @@ namespace SoundJabber
 
             App.ViewModel.LoadData();
         }
+
+        private void ContextMenu_Load(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ContextMenu c = sender as ContextMenu;
+
+            PivotItem item = Pivot.SelectedItem as PivotItem;
+            if (!item.Header.Equals("Mine"))
+            {
+                MenuItem deleteMenuItem = c.Items[1] as MenuItem;
+                deleteMenuItem.IsEnabled = false;
+            }
+        }
     }
 }

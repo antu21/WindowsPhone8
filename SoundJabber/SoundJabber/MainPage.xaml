@@ -33,7 +33,7 @@
                 </StackPanel>
 
                 <toolkit:ContextMenuService.ContextMenu>
-                    <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu" >
+                    <toolkit:ContextMenu IsZoomEnabled="True" x:Name="ContextMenu" Loaded="ContextMenu_Load" >
                         <toolkit:MenuItem x:Name="Pin" Header="Pin" Click="Pin_Click"/>
                         <toolkit:MenuItem x:Name="Delete" Header="Delete" Click="Delete_Click"/>
                     </toolkit:ContextMenu>
