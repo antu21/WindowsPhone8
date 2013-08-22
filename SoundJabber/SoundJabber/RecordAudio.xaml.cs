@@ -71,7 +71,7 @@ namespace SoundJabber
                 IsolatedStorageSettings.ApplicationSettings[SoundModel.CustomSoundKey] = data;
                 IsolatedStorageSettings.ApplicationSettings.Save();
 
-                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.RelativeOrAbsolute));
+                NavigationService.Navigate(new Uri("/MainPage.xaml?pivotItem=custom", UriKind.RelativeOrAbsolute));
             }
 
         }

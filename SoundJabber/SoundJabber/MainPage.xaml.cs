@@ -34,6 +34,15 @@ namespace SoundJabber
             if (!App.ViewModel.IsDataLoaded)
             {
                 App.ViewModel.LoadData();
+
+            }
+            else
+            {
+                // Navigate to custom pivot item
+                if (this.NavigationContext.QueryString["pivotItem"].Equals("custom"))
+                {
+                    Pivot.SelectedIndex = 4;
+                }
             }
         }
 
@@ -129,23 +138,23 @@ namespace SoundJabber
             {
                 if (data.Title.Equals(item.Title))
                 {
+                    group.Items.Remove(item);
+                    App.ViewModel.CustomSounds.Items.Remove(item);
 
-                    IsolatedStorageSettings.ApplicationSettings.Clear();
-                    //foreach (var item in IsolatedStorageSettings.ApplicationSettings.)
-                    //{
-
-                    //}
-
+                    // Delete sound file from store
                     using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                     {
                         if (isoStore.FileExists(item.FilePath))
                         {
                             isoStore.DeleteFile(item.FilePath);
-                            //App.ViewModel.CustomSounds.Items.Remove(item);
-                            App.ViewModel.CustomSounds.Items.Clear();
                             break;
                         }
                     }
+
+                    // Update ApplicationSettings
+                    var newData = JsonConvert.SerializeObject(group);
+                    IsolatedStorageSettings.ApplicationSettings[SoundModel.CustomSoundKey] = newData;
+                    IsolatedStorageSettings.ApplicationSettings.Save();
                 }
             }
 
