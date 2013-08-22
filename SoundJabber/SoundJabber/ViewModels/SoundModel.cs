@@ -42,7 +42,7 @@ namespace SoundJabber.ViewModels
             else
             {
                 data = new SoundGroup();
-                data.Title = "mine";
+                data.Title = "Custom";
             }
 
             return data;

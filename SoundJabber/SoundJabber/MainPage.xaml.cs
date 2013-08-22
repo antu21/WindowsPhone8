@@ -34,7 +34,6 @@ namespace SoundJabber
             if (!App.ViewModel.IsDataLoaded)
             {
                 App.ViewModel.LoadData();
-
             }
             else
             {
@@ -150,15 +149,16 @@ namespace SoundJabber
                             break;
                         }
                     }
-
-                    // Update ApplicationSettings
-                    var newData = JsonConvert.SerializeObject(group);
-                    IsolatedStorageSettings.ApplicationSettings[SoundModel.CustomSoundKey] = newData;
-                    IsolatedStorageSettings.ApplicationSettings.Save();
                 }
             }
 
+            // Update ApplicationSettings
+            var newData = JsonConvert.SerializeObject(group);
+            IsolatedStorageSettings.ApplicationSettings[SoundModel.CustomSoundKey] = newData;
+            IsolatedStorageSettings.ApplicationSettings.Save();
+
             App.ViewModel.LoadData();
+            NavigationService.Navigate(new Uri("/NavigationPage.xaml", UriKind.Relative));
         }
 
         private void ContextMenu_Load(object sender, System.Windows.RoutedEventArgs e)
@@ -166,7 +166,7 @@ namespace SoundJabber
             ContextMenu c = sender as ContextMenu;
 
             PivotItem item = Pivot.SelectedItem as PivotItem;
-            if (!item.Header.Equals("Mine"))
+            if (!item.Header.Equals("Custom"))
             {
                 MenuItem deleteMenuItem = c.Items[1] as MenuItem;
                 deleteMenuItem.IsEnabled = false;
