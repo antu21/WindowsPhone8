@@ -27,6 +27,7 @@ namespace SoundJabber
 
             // Sample code to localize the ApplicationBar
             BuildLocalizedApplicationBar();
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -96,29 +97,46 @@ namespace SoundJabber
             // Create a new button and set the text value to the localized string from AppResources.
             ApplicationBarIconButton recordButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/microphone.png", UriKind.Relative));
             recordButton.Text = AppResources.AppBarRecordButtonText;
-            recordButton.Click += recordButton_Click;
+            recordButton.Click += RecordButton_Click;
             ApplicationBar.Buttons.Add(recordButton);
 
             // Create a new menu item with the localized string from AppResources.
             ApplicationBarMenuItem aboutMenuItem = new ApplicationBarMenuItem(AppResources.AppBarAboutMenuItemText);
-            aboutMenuItem.Click += aboutMenuItem_Click;
+            aboutMenuItem.Click += AboutMenuItem_Click;
             ApplicationBar.MenuItems.Add(aboutMenuItem);
         }
 
-        void aboutMenuItem_Click(object sender, EventArgs e)
+        void AboutMenuItem_Click(object sender, EventArgs e)
         {
             AboutPrompt aboutMe = new AboutPrompt();
             aboutMe.Show("Prasad Honrao", "PrasadHonrao", "Honrao.Prasad@hotmail.com", "http://PrasadHonrao.com");
         }
 
-        void recordButton_Click(object sender, EventArgs e)
+        void RecordButton_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/RecordAudio.xaml", UriKind.Relative));
         }
 
         private void Pin_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            //SoundData data = (sender as MenuItem).DataContext as SoundData;
 
+            //StandardTileData standardTileData = new StandardTileData();
+            //standardTileData.BackgroundImage = null;
+            //standardTileData.Title = data.Title;
+            //standardTileData.BackTitle = data.Title;
+            //standardTileData.BackContent = "Sound Jabber";
+            //standardTileData.BackBackgroundImage = null;
+            //ShellTile tiletopin = ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains("MainPage.xaml"));
+
+            //if (tiletopin == null)
+            //{
+            //    ShellTile.Create(new Uri("/MainPage.xaml", UriKind.Relative), standardTileData, true);
+            //}
+            //else
+            //{
+            //    MessageBox.Show(string.Format("{0} sound already pinned!", data.Title));
+            //}
         }
 
         private void Delete_Click(object sender, System.Windows.RoutedEventArgs e)

@@ -43,11 +43,11 @@ namespace SoundJabber
             InputPrompt prompt = new InputPrompt();
             prompt.Message = "Enter the sound name";
             prompt.Title = "Sound Name";
-            prompt.Completed += prompt_Completed;
+            prompt.Completed += Prompt_Completed;
             prompt.Show();
         }
 
-        void prompt_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
+        void Prompt_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
             if (e.PopUpResult == PopUpResult.Ok)
             {
@@ -61,20 +61,34 @@ namespace SoundJabber
                     {
                         isoStore.CreateDirectory("/customAudio/");
                     }
-                    isoStore.MoveFile(tempFile, sound.FilePath);
+
+                    // Check for available space in store
+                    if (tempFile.Length < isoStore.AvailableFreeSpace)
+                    {
+                        isoStore.MoveFile(tempFile, sound.FilePath);
+
+                        App.ViewModel.CustomSounds.Items.Add(sound);
+
+                        // save to applicationsettings
+                        var data = JsonConvert.SerializeObject(App.ViewModel.CustomSounds);
+                        IsolatedStorageSettings.ApplicationSettings[SoundModel.CustomSoundKey] = data;
+                        IsolatedStorageSettings.ApplicationSettings.Save();
+
+                        NavigationService.Navigate(new Uri("/MainPage.xaml?pivotItem=custom", UriKind.RelativeOrAbsolute));
+                    }
+                    else
+                    {
+                        var messagePrompt = new MessagePrompt
+                        {
+                            Title = "Sound Jabber",
+                            Message = "Not enough space available to store custom sounds. Please delete existing custom sounds and try again."
+                        };
+                        messagePrompt.Show();
+                    }
                 }
-
-                App.ViewModel.CustomSounds.Items.Add(sound);
-
-                // save to applicationsettings
-                var data = JsonConvert.SerializeObject(App.ViewModel.CustomSounds);
-                IsolatedStorageSettings.ApplicationSettings[SoundModel.CustomSoundKey] = data;
-                IsolatedStorageSettings.ApplicationSettings.Save();
-
-                NavigationService.Navigate(new Uri("/MainPage.xaml?pivotItem=custom", UriKind.RelativeOrAbsolute));
             }
-
         }
+
 
         private void RecordToggleButton_Checked(object sender, System.Windows.RoutedEventArgs e)
         {
