@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{051976c5-9c57-4376-9d82-b31d488eb62a}" Title="Sound Jabber" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="SoundJabber author" Description="Sound Jabber description" Publisher="SoundJabber" PublisherID="{c9eb45e2-7996-4e1f-9fc2-9bccd9865d24}">
+  <App xmlns="" ProductID="{051976c5-9c57-4376-9d82-b31d488eb62a}" Title="Sound Jabber" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Prasad Honrao" Description="Sound Jabber description" Publisher="Prasad Honrao" PublisherID="{c9eb45e2-7996-4e1f-9fc2-9bccd9865d24}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
@@ -20,21 +20,17 @@
           <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
           <Count>0</Count>
           <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
-          <Title>Sound Jabber</Title>
+          <Title>
+          </Title>
           <BackContent>
           </BackContent>
-          <BackBackgroundImageURI>
+          <BackBackgroundImageURI IsRelative="true" IsResource="false">
           </BackBackgroundImageURI>
           <BackTitle>
           </BackTitle>
-          <LargeBackgroundImageURI IsRelative="true" IsResource="false">
-          </LargeBackgroundImageURI>
-          <LargeBackContent />
-          <LargeBackBackgroundImageURI IsRelative="true" IsResource="false">
-          </LargeBackBackgroundImageURI>
-          <DeviceLockImageURI>
+          <DeviceLockImageURI IsRelative="true" IsResource="false">
           </DeviceLockImageURI>
-          <HasLarge>True</HasLarge>
+          <HasLarge>false</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>

@@ -7,6 +7,8 @@ using SoundJabber.ViewModels;
 using System;
 using System.IO;
 using System.IO.IsolatedStorage;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -38,10 +40,13 @@ namespace SoundJabber
             }
             else
             {
-                // Navigate to custom pivot item
-                if (this.NavigationContext.QueryString["pivotItem"].Equals("custom"))
+                if (this.NavigationContext.QueryString.ContainsKey("pivotItem"))
                 {
-                    Pivot.SelectedIndex = 4;
+                    // Navigate to custom pivot item
+                    if (this.NavigationContext.QueryString["pivotItem"].Equals("custom"))
+                    {
+                        Pivot.SelectedIndex = 4;
+                    }
                 }
             }
         }
@@ -119,24 +124,27 @@ namespace SoundJabber
 
         private void Pin_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            //SoundData data = (sender as MenuItem).DataContext as SoundData;
+            SoundData data = (sender as MenuItem).DataContext as SoundData;
 
-            //StandardTileData standardTileData = new StandardTileData();
-            //standardTileData.BackgroundImage = null;
-            //standardTileData.Title = data.Title;
-            //standardTileData.BackTitle = data.Title;
-            //standardTileData.BackContent = "Sound Jabber";
-            //standardTileData.BackBackgroundImage = null;
-            //ShellTile tiletopin = ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains("MainPage.xaml"));
+            StandardTileData standardTileData = new StandardTileData();
+            standardTileData.BackgroundImage = null;
+            standardTileData.Title = data.Title;
+            standardTileData.BackTitle = data.Title;
+            standardTileData.BackContent = "Sound Jabber";
+            standardTileData.BackBackgroundImage = null;
 
-            //if (tiletopin == null)
-            //{
-            //    ShellTile.Create(new Uri("/MainPage.xaml", UriKind.Relative), standardTileData, true);
-            //}
-            //else
-            //{
-            //    MessageBox.Show(string.Format("{0} sound already pinned!", data.Title));
-            //}
+            Uri u = new Uri("/MainPage.xaml?" + data.Title, UriKind.Relative);
+
+            ShellTile tiletopin = ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains(u.OriginalString));
+
+            if (tiletopin == null)
+            {
+                ShellTile.Create(u, standardTileData, false);
+            }
+            else
+            {
+                MessageBox.Show(string.Format("{0} sound already pinned!", data.Title));
+            }
         }
 
         private void Delete_Click(object sender, System.Windows.RoutedEventArgs e)
