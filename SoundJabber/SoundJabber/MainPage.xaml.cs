@@ -16,7 +16,6 @@ namespace SoundJabber
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        public const string CustomSoundKey = "CustomSound";
         public SoundData CurrentItem { get; set; }
 
         // Constructor
@@ -153,7 +152,7 @@ namespace SoundJabber
             SoundGroup group = null;
             string dataFromAppSettings;
 
-            if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CustomSoundKey, out dataFromAppSettings))
+            if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(Constants.CustomSoundKey, out dataFromAppSettings))
             {
                 group = JsonConvert.DeserializeObject<SoundGroup>(dataFromAppSettings);
             }

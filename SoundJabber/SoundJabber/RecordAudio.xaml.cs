@@ -14,16 +14,15 @@ namespace SoundJabber
 {
     public partial class RecordAudio : PhoneApplicationPage
     {
-        MicrophoneRecorder recorder = new MicrophoneRecorder();
+        MicrophoneRecorder recorder;
         IsolatedStorageFileStream audioStream;
         string tempFile = "tempwav.wav";
-        public const string CustomSoundKey = "CustomSound";
 
         public RecordAudio()
         {
             InitializeComponent();
-
             BuildLocalizedApplicationBar();
+            recorder = new MicrophoneRecorder();
         }
 
         private void BuildLocalizedApplicationBar()
@@ -99,7 +98,7 @@ namespace SoundJabber
                     #region Check for duplicate sound
                     SoundGroup group = null;
                     string dataFromAppSettings;
-                    if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CustomSoundKey, out dataFromAppSettings))
+                    if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(Constants.CustomSoundKey, out dataFromAppSettings))
                     {
                         group = JsonConvert.DeserializeObject<SoundGroup>(dataFromAppSettings);
                     }
@@ -147,7 +146,6 @@ namespace SoundJabber
                 }
             }
         }
-
 
         private void RecordToggleButton_Checked(object sender, System.Windows.RoutedEventArgs e)
         {
