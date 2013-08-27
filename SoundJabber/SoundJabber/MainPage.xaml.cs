@@ -151,7 +151,6 @@ namespace SoundJabber
         {
             SoundData data = (sender as MenuItem).DataContext as SoundData;
             SoundGroup group = null;
-
             string dataFromAppSettings;
 
             if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CustomSoundKey, out dataFromAppSettings))

@@ -17,6 +17,7 @@ namespace SoundJabber
         MicrophoneRecorder recorder = new MicrophoneRecorder();
         IsolatedStorageFileStream audioStream;
         string tempFile = "tempwav.wav";
+        public const string CustomSoundKey = "CustomSound";
 
         public RecordAudio()
         {
@@ -62,7 +63,31 @@ namespace SoundJabber
                         isoStore.CreateDirectory("/customAudio/");
                     }
 
-                    // Check for available space in store
+                    #region Check for duplicate sound
+                    SoundGroup group = null;
+                    string dataFromAppSettings;
+                    if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CustomSoundKey, out dataFromAppSettings))
+                    {
+                        group = JsonConvert.DeserializeObject<SoundGroup>(dataFromAppSettings);
+                    }
+
+                    foreach (var item in group.Items)
+                    {
+                        if (sound.Title.Equals(item.Title))
+                        {
+                            var messagePrompt = new MessagePrompt
+                            {
+                                Title = "Sound Jabber",
+                                Message = "Custom sound with same name already exists. Please input different name."
+                            };
+                            messagePrompt.Show();
+                            return;
+                        }
+                    }
+
+                    #endregion
+
+                    #region Check for available space in store
                     if (tempFile.Length < isoStore.AvailableFreeSpace)
                     {
                         isoStore.MoveFile(tempFile, sound.FilePath);
@@ -85,6 +110,7 @@ namespace SoundJabber
                         };
                         messagePrompt.Show();
                     }
+                    #endregion
                 }
             }
         }
