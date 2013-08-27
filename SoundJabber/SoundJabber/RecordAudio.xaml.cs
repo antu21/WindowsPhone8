@@ -34,12 +34,12 @@ namespace SoundJabber
             // Create a new button and set the text value to the localized string from AppResources.
             ApplicationBarIconButton saveButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/save.png", UriKind.Relative));
             saveButton.Text = AppResources.AppBarSaveButtonText;
-            saveButton.Click += saveButton_Click;
+            saveButton.Click += SaveButton_Click;
             ApplicationBar.Buttons.Add(saveButton);
             ApplicationBar.IsVisible = false;
         }
 
-        void saveButton_Click(object sender, EventArgs e)
+        void SaveButton_Click(object sender, EventArgs e)
         {
             InputPrompt prompt = new InputPrompt();
             prompt.Message = "Enter the sound name";
@@ -52,6 +52,39 @@ namespace SoundJabber
         {
             if (e.PopUpResult == PopUpResult.Ok)
             {
+                #region Custom sound name validation - Empty string
+                if (e.Result.Length == 0)
+                {
+                    var messagePrompt = new MessagePrompt
+                    {
+                        Title = "Sound Jabber",
+                        Message = "Custom sound name cannot be empty."
+                    };
+                    messagePrompt.Show();
+
+                    return;
+                }
+                #endregion
+
+                #region Special character handling in Sound Title
+                var input = e.Result;
+
+                foreach (char c in input)
+                {
+                    if (!Char.IsLetterOrDigit(c) || c == '_' || c == ' ')
+                    {
+                        var messagePrompt = new MessagePrompt
+                        {
+                            Title = "Sound Jabber",
+                            Message = "Special characters are not allowd in custom sound name."
+                        };
+                        messagePrompt.Show();
+
+                        return;
+                    }
+                }
+                #endregion
+
                 SoundData sound = new SoundData();
                 sound.FilePath = string.Format("/customAudio/{0}.wav", DateTime.Now.ToFileTime());
                 sound.Title = e.Result;
