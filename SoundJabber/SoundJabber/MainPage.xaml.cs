@@ -33,6 +33,8 @@ namespace SoundJabber
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            #region Play sound from Phone start screen and then navigate to specific pivot item
+
             if (this.NavigationContext.QueryString.ContainsKey("audioFile"))
             {
                 if (File.Exists(this.NavigationContext.QueryString["audioFile"].ToString()))
@@ -42,25 +44,19 @@ namespace SoundJabber
                 }
                 else
                 {
-                    try
+                    // Run custom sound file here.
+                    using (var storageFolder = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        // Run custom sound file here.
-                        using (var storageFolder = IsolatedStorageFile.GetUserStoreForApplication())
+                        using (var stream = new IsolatedStorageFileStream(this.NavigationContext.QueryString["audioFile"].ToString(), FileMode.Open, storageFolder))
                         {
-                            using (var stream = new IsolatedStorageFileStream(this.NavigationContext.QueryString["audioFile"].ToString(), FileMode.Open, storageFolder))
-                            {
-                                AudioPlayer.SetSource(stream);
-                                AudioPlayer.Play();
-                            }
+                            AudioPlayer.SetSource(stream);
+                            AudioPlayer.Play();
                         }
                     }
-                    catch (Exception ex)
-                    {
-                        string s = ex.Message;
-                    }
                 }
-
             }
+
+            #endregion
 
             if (!App.ViewModel.IsDataLoaded)
             {
@@ -76,6 +72,12 @@ namespace SoundJabber
                         Pivot.SelectedIndex = 4;
                     }
                 }
+            }
+
+            if (this.NavigationContext.QueryString.ContainsKey("pivotItemIndex"))
+            {
+                int index = Convert.ToInt32(this.NavigationContext.QueryString["pivotItemIndex"]);
+                Pivot.SelectedIndex = index; ;
             }
         }
 
@@ -161,7 +163,9 @@ namespace SoundJabber
             standardTileData.BackContent = AppResources.ApplicationTitle;
             standardTileData.BackBackgroundImage = null;
 
-            Uri u = new Uri("/MainPage.xaml?audioFile=" + data.FilePath, UriKind.Relative);
+            var navUrl = "/MainPage.xaml?audioFile=" + data.FilePath + "&pivotItemIndex=" + Pivot.SelectedIndex;
+
+            Uri u = new Uri(navUrl, UriKind.Relative);
 
             ShellTile tiletopin = ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains(u.OriginalString));
 
@@ -207,7 +211,7 @@ namespace SoundJabber
 
             // Update ApplicationSettings
             var newData = JsonConvert.SerializeObject(group);
-            IsolatedStorageSettings.ApplicationSettings[SoundModel.CustomSoundKey] = newData;
+            IsolatedStorageSettings.ApplicationSettings[Constants.CustomSoundKey] = newData;
             IsolatedStorageSettings.ApplicationSettings.Save();
 
             App.ViewModel.LoadData();

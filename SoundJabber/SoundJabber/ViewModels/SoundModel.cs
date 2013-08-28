@@ -11,8 +11,6 @@ namespace SoundJabber.ViewModels
         public SoundGroup CustomSounds { get; set; }
         public SoundGroup Taunts { get; set; }
 
-        public const string CustomSoundKey = "CustomSound";
-
         public bool IsDataLoaded
         {
             get;
@@ -35,7 +33,7 @@ namespace SoundJabber.ViewModels
             SoundGroup data;
             string dataFromAppSettings;
 
-            if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(CustomSoundKey, out dataFromAppSettings))
+            if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(Constants.CustomSoundKey, out dataFromAppSettings))
             {
                 data = JsonConvert.DeserializeObject<SoundGroup>(dataFromAppSettings);
             }
@@ -270,15 +268,13 @@ namespace SoundJabber.ViewModels
         private SoundGroup CreateAnimalsGroup()
         {
             SoundGroup data = new SoundGroup();
-            data.Title = "animals12";
+            data.Title = "animals";
             string basePath = "assets/audio/animals/";
-            string tileImageBasePath = "assets/tileImages/animals/";
 
             data.Items.Add(new SoundData
             {
                 Title = "Cat Kitten",
-                FilePath = basePath + "Cat Kitten.wav",
-                TileImage = tileImageBasePath + "cat.png"
+                FilePath = basePath + "Cat Kitten.wav"
             });
 
             data.Items.Add(new SoundData

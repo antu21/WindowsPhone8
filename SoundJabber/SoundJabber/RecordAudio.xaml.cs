@@ -131,7 +131,7 @@ namespace SoundJabber
 
                         // save to applicationsettings
                         var data = JsonConvert.SerializeObject(App.ViewModel.CustomSounds);
-                        IsolatedStorageSettings.ApplicationSettings[SoundModel.CustomSoundKey] = data;
+                        IsolatedStorageSettings.ApplicationSettings[Constants.CustomSoundKey] = data;
                         IsolatedStorageSettings.ApplicationSettings.Save();
 
                         NavigationService.Navigate(new Uri("/MainPage.xaml?pivotItem=custom", UriKind.RelativeOrAbsolute));
