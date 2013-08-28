@@ -19,18 +19,18 @@
         <DataTemplate x:Key="SoundTileDataTemplate">
             <Grid Background="{StaticResource PhoneAccentBrush}" Margin="0,0,12,12">
 
-                <Grid VerticalAlignment="Top"
-                      HorizontalAlignment="Right"
+                <Grid VerticalAlignment="Center"
+                      HorizontalAlignment="Center"
                       Width="40"
                       Height="40"
-                      Margin="0, 6, 6, 0">
+                      Margin="6, 6, 6, 6">
                     
                     <Ellipse Stroke="{StaticResource PhoneForegroundBrush}"
                                                  StrokeThickness="3"/>
                     <Image Source="/Assets/AppBar/Play.png" />
                 </Grid>
 
-                <StackPanel VerticalAlignment="Bottom">
+                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center">
                     <TextBlock Text="{Binding Title}" Margin="6,0,0,6" />
                 </StackPanel>
 

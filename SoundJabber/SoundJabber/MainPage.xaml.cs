@@ -31,6 +31,11 @@ namespace SoundJabber
 
         }
 
+        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
+        {
+            base.OnBackKeyPress(e);
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             #region Play sound from Phone start screen and then navigate to specific pivot item
@@ -41,6 +46,7 @@ namespace SoundJabber
                 {
                     AudioPlayer.Source = new Uri(this.NavigationContext.QueryString["audioFile"].ToString(), UriKind.RelativeOrAbsolute);
                     AudioPlayer.Play();
+                    this.OnBackKeyPress(new System.ComponentModel.CancelEventArgs(false));
                 }
                 else
                 {
@@ -156,12 +162,17 @@ namespace SoundJabber
         {
             SoundData data = (sender as MenuItem).DataContext as SoundData;
 
-            StandardTileData standardTileData = new StandardTileData();
-            standardTileData.BackgroundImage = null;
-            standardTileData.Title = data.Title;
-            standardTileData.BackTitle = data.Title;
-            standardTileData.BackContent = AppResources.ApplicationTitle;
-            standardTileData.BackBackgroundImage = null;
+            //StandardTileData standardTileData = new StandardTileData();
+            //standardTileData.BackgroundImage = new Uri("/Assets/ApplicationIcon.png", UriKind.RelativeOrAbsolute);
+            //standardTileData.Title = data.Title;
+            //standardTileData.BackTitle = data.Title;
+            //standardTileData.BackContent = AppResources.ApplicationTitle;
+            //standardTileData.BackBackgroundImage = null;
+
+            IconicTileData iconTileData = new IconicTileData();
+            iconTileData.IconImage = new Uri("/Assets/ApplicationIcon.png", UriKind.RelativeOrAbsolute);
+            iconTileData.SmallIconImage = new Uri("/Assets/ApplicationIcon.png", UriKind.RelativeOrAbsolute);
+            iconTileData.Title = data.Title;
 
             var navUrl = "/MainPage.xaml?audioFile=" + data.FilePath + "&pivotItemIndex=" + Pivot.SelectedIndex;
 
@@ -171,7 +182,7 @@ namespace SoundJabber
 
             if (tiletopin == null)
             {
-                ShellTile.Create(u, standardTileData, false);
+                ShellTile.Create(u, iconTileData, false);
             }
             else
             {
