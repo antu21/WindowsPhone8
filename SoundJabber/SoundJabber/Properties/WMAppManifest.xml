@@ -17,11 +17,10 @@
     <Tokens>
       <PrimaryToken TokenID="SoundJabberToken" TaskName="_default">
         <TemplateIconic>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\sound - small.png</SmallImageURI>
           <Count>0</Count>
-          <IconImageURI IsRelative="true" IsResource="false">Assets\Tiles\IconicTileMediumLarge.png</IconImageURI>
-          <Title>
-          </Title>
+          <IconImageURI IsRelative="true" IsResource="false">Assets\Tiles\sound - medium.png</IconImageURI>
+          <Title>Sound Jabber</Title>
           <Message>
           </Message>
           <BackgroundColor>
