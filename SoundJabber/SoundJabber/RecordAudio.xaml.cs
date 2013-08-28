@@ -56,7 +56,7 @@ namespace SoundJabber
                 {
                     var messagePrompt = new MessagePrompt
                     {
-                        Title = "Sound Jabber",
+                        Title = AppResources.ApplicationTitle,
                         Message = "Custom sound name cannot be empty."
                     };
                     messagePrompt.Show();
@@ -74,7 +74,7 @@ namespace SoundJabber
                     {
                         var messagePrompt = new MessagePrompt
                         {
-                            Title = "Sound Jabber",
+                            Title = AppResources.ApplicationTitle,
                             Message = "Special characters are not allowd in custom sound name."
                         };
                         messagePrompt.Show();
@@ -111,7 +111,7 @@ namespace SoundJabber
                             {
                                 var messagePrompt = new MessagePrompt
                                 {
-                                    Title = "Sound Jabber",
+                                    Title = AppResources.ApplicationTitle,
                                     Message = "Custom sound with same name already exists. Please input different name."
                                 };
                                 messagePrompt.Show();
@@ -140,7 +140,7 @@ namespace SoundJabber
                     {
                         var messagePrompt = new MessagePrompt
                         {
-                            Title = "Sound Jabber",
+                            Title = AppResources.ApplicationTitle,
                             Message = "Not enough space available to store custom sounds. Please delete existing custom sounds and try again."
                         };
                         messagePrompt.Show();

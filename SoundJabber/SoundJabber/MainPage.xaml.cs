@@ -158,7 +158,7 @@ namespace SoundJabber
             standardTileData.BackgroundImage = null;
             standardTileData.Title = data.Title;
             standardTileData.BackTitle = data.Title;
-            standardTileData.BackContent = "Sound Jabber";
+            standardTileData.BackContent = AppResources.ApplicationTitle;
             standardTileData.BackBackgroundImage = null;
 
             Uri u = new Uri("/MainPage.xaml?audioFile=" + data.FilePath, UriKind.Relative);
