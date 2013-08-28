@@ -33,6 +33,35 @@ namespace SoundJabber
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (this.NavigationContext.QueryString.ContainsKey("audioFile"))
+            {
+                if (File.Exists(this.NavigationContext.QueryString["audioFile"].ToString()))
+                {
+                    AudioPlayer.Source = new Uri(this.NavigationContext.QueryString["audioFile"].ToString(), UriKind.RelativeOrAbsolute);
+                    AudioPlayer.Play();
+                }
+                else
+                {
+                    try
+                    {
+                        // Run custom sound file here.
+                        using (var storageFolder = IsolatedStorageFile.GetUserStoreForApplication())
+                        {
+                            using (var stream = new IsolatedStorageFileStream(this.NavigationContext.QueryString["audioFile"].ToString(), FileMode.Open, storageFolder))
+                            {
+                                AudioPlayer.SetSource(stream);
+                                AudioPlayer.Play();
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        string s = ex.Message;
+                    }
+                }
+
+            }
+
             if (!App.ViewModel.IsDataLoaded)
             {
                 App.ViewModel.LoadData();
@@ -132,7 +161,7 @@ namespace SoundJabber
             standardTileData.BackContent = "Sound Jabber";
             standardTileData.BackBackgroundImage = null;
 
-            Uri u = new Uri("/MainPage.xaml?" + data.Title, UriKind.Relative);
+            Uri u = new Uri("/MainPage.xaml?audioFile=" + data.FilePath, UriKind.Relative);
 
             ShellTile tiletopin = ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains(u.OriginalString));
 

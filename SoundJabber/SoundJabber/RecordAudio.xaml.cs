@@ -70,7 +70,7 @@ namespace SoundJabber
 
                 foreach (char c in input)
                 {
-                    if (!Char.IsLetterOrDigit(c) || c == '_' || c == ' ')
+                    if (!Char.IsLetterOrDigit(c))
                     {
                         var messagePrompt = new MessagePrompt
                         {
@@ -103,17 +103,20 @@ namespace SoundJabber
                         group = JsonConvert.DeserializeObject<SoundGroup>(dataFromAppSettings);
                     }
 
-                    foreach (var item in group.Items)
+                    if (group != null)
                     {
-                        if (sound.Title.Equals(item.Title))
+                        foreach (var item in group.Items)
                         {
-                            var messagePrompt = new MessagePrompt
+                            if (sound.Title.Equals(item.Title))
                             {
-                                Title = "Sound Jabber",
-                                Message = "Custom sound with same name already exists. Please input different name."
-                            };
-                            messagePrompt.Show();
-                            return;
+                                var messagePrompt = new MessagePrompt
+                                {
+                                    Title = "Sound Jabber",
+                                    Message = "Custom sound with same name already exists. Please input different name."
+                                };
+                                messagePrompt.Show();
+                                return;
+                            }
                         }
                     }
 
