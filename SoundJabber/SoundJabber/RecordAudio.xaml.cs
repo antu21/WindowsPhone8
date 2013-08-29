@@ -51,80 +51,21 @@ namespace SoundJabber
         {
             if (e.PopUpResult == PopUpResult.Ok)
             {
-                #region Custom sound name validation - Empty string
-                if (e.Result.Length == 0)
-                {
-                    var messagePrompt = new MessagePrompt
-                    {
-                        Title = AppResources.ApplicationTitle,
-                        Message = "Custom sound name cannot be empty."
-                    };
-                    messagePrompt.Show();
-
-                    return;
-                }
-                #endregion
-
-                #region Special character handling in Sound Title
-                var input = e.Result;
-
-                foreach (char c in input)
-                {
-                    if (!Char.IsLetterOrDigit(c))
-                    {
-                        var messagePrompt = new MessagePrompt
-                        {
-                            Title = AppResources.ApplicationTitle,
-                            Message = "Special characters are not allowd in custom sound name."
-                        };
-                        messagePrompt.Show();
-
-                        return;
-                    }
-                }
-                #endregion
-
                 SoundData sound = new SoundData();
                 sound.FilePath = string.Format("/customAudio/{0}.wav", DateTime.Now.ToFileTime());
                 sound.Title = e.Result;
 
-                using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
+                var respose = ValidateCustomSound(sound);
+                if (respose.IsValid)
                 {
-                    if (!isoStore.DirectoryExists("/customAudio/"))
-                    {
-                        isoStore.CreateDirectory("/customAudio/");
-                    }
 
-                    #region Check for duplicate sound
-                    SoundGroup group = null;
-                    string dataFromAppSettings;
-                    if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(Constants.CustomSoundKey, out dataFromAppSettings))
+                    using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        group = JsonConvert.DeserializeObject<SoundGroup>(dataFromAppSettings);
-                    }
-
-                    if (group != null)
-                    {
-                        foreach (var item in group.Items)
+                        if (!isoStore.DirectoryExists("/customAudio/"))
                         {
-                            if (sound.Title.Equals(item.Title))
-                            {
-                                var messagePrompt = new MessagePrompt
-                                {
-                                    Title = AppResources.ApplicationTitle,
-                                    Message = "Custom sound with same name already exists. Please input different name."
-                                };
-                                messagePrompt.Show();
-                                return;
-                            }
+                            isoStore.CreateDirectory("/customAudio/");
                         }
-                    }
 
-                    #endregion
-
-                    #region Check for available space in store
-                    if (tempFile.Length < isoStore.AvailableFreeSpace)
-                    {
                         isoStore.MoveFile(tempFile, sound.FilePath);
 
                         App.ViewModel.CustomSounds.Items.Add(sound);
@@ -136,18 +77,80 @@ namespace SoundJabber
 
                         NavigationService.Navigate(new Uri("/MainPage.xaml?pivotItem=custom", UriKind.RelativeOrAbsolute));
                     }
-                    else
+                }
+                else
+                {
+                    var messagePrompt = new MessagePrompt
                     {
-                        var messagePrompt = new MessagePrompt
-                        {
-                            Title = AppResources.ApplicationTitle,
-                            Message = "Not enough space available to store custom sounds. Please delete existing custom sounds and try again."
-                        };
-                        messagePrompt.Show();
-                    }
-                    #endregion
+                        Title = AppResources.ApplicationTitle,
+                        Message = respose.Message
+                    };
+                    messagePrompt.Show();
                 }
             }
+        }
+
+        private ValidateCustomSoundResponse ValidateCustomSound(SoundData customSound)
+        {
+            var response = new ValidateCustomSoundResponse { IsValid = true, Message = "Valid sound" };
+
+            #region Custom sound name validation - Empty string
+            if (customSound.Title.Length == 0)
+            {
+                response.IsValid = false;
+                response.Message = "Custom sound name cannot be empty";
+                return response;
+            }
+            #endregion
+
+            #region Special character handling in Sound Title
+            foreach (char c in customSound.Title)
+            {
+                if (!Char.IsLetterOrDigit(c))
+                {
+                    response.IsValid = false;
+                    response.Message = "Special characters are not allowed in custom sound name";
+                    return response;
+                }
+            }
+            #endregion
+
+            #region Check for duplicate sound
+            SoundGroup group = null;
+            string dataFromAppSettings;
+            if (IsolatedStorageSettings.ApplicationSettings.TryGetValue(Constants.CustomSoundKey, out dataFromAppSettings))
+            {
+                group = JsonConvert.DeserializeObject<SoundGroup>(dataFromAppSettings);
+            }
+
+            if (group != null)
+            {
+                foreach (var item in group.Items)
+                {
+                    if (customSound.Title.Equals(item.Title))
+                    {
+                        response.IsValid = false;
+                        response.Message = "Custom sound with same name already exists. Please input different name.";
+                        return response;
+                    }
+                }
+            }
+            #endregion
+
+            #region Check for available space in store
+            using (IsolatedStorageFile isoStore = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                if (tempFile.Length > isoStore.AvailableFreeSpace)
+                {
+                    response.IsValid = false;
+                    response.Message = "Not enough space available to store custom sounds. Please delete existing custom sounds and try again.";
+                    return response;
+                }
+            }
+
+            #endregion
+
+            return response;
         }
 
         private void RecordToggleButton_Checked(object sender, System.Windows.RoutedEventArgs e)

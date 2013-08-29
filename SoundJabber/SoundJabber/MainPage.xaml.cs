@@ -18,22 +18,13 @@ namespace SoundJabber
     {
         public SoundData CurrentItem { get; set; }
 
-        // Constructor
         public MainPage()
         {
             InitializeComponent();
 
-            // Set the data context of the listbox control to the sample data
             DataContext = App.ViewModel;
 
-            // Sample code to localize the ApplicationBar
             BuildLocalizedApplicationBar();
-
-        }
-
-        protected override void OnBackKeyPress(System.ComponentModel.CancelEventArgs e)
-        {
-            base.OnBackKeyPress(e);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -42,18 +33,18 @@ namespace SoundJabber
 
             if (this.NavigationContext.QueryString.ContainsKey("audioFile"))
             {
-                if (File.Exists(this.NavigationContext.QueryString["audioFile"].ToString()))
+                var soundFile = this.NavigationContext.QueryString["audioFile"].ToString();
+
+                if (File.Exists(soundFile))
                 {
-                    AudioPlayer.Source = new Uri(this.NavigationContext.QueryString["audioFile"].ToString(), UriKind.RelativeOrAbsolute);
+                    AudioPlayer.Source = new Uri(soundFile, UriKind.RelativeOrAbsolute);
                     AudioPlayer.Play();
-                    this.OnBackKeyPress(new System.ComponentModel.CancelEventArgs(false));
                 }
                 else
                 {
-                    // Run custom sound file here.
                     using (var storageFolder = IsolatedStorageFile.GetUserStoreForApplication())
                     {
-                        using (var stream = new IsolatedStorageFileStream(this.NavigationContext.QueryString["audioFile"].ToString(), FileMode.Open, storageFolder))
+                        using (var stream = new IsolatedStorageFileStream(soundFile, FileMode.Open, storageFolder))
                         {
                             AudioPlayer.SetSource(stream);
                             AudioPlayer.Play();
