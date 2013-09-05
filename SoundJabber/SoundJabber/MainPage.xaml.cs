@@ -66,7 +66,7 @@ namespace SoundJabber
                     // Navigate to custom pivot item
                     if (this.NavigationContext.QueryString["pivotItem"].Equals("custom"))
                     {
-                        Pivot.SelectedIndex = 4;
+                        Pivot.SelectedItem = CustomPivotItem;
                     }
                 }
             }
@@ -138,13 +138,13 @@ namespace SoundJabber
             ApplicationBar.MenuItems.Add(aboutMenuItem);
         }
 
-        void AboutMenuItem_Click(object sender, EventArgs e)
+        private void AboutMenuItem_Click(object sender, EventArgs e)
         {
             AboutPrompt aboutMe = new AboutPrompt();
             aboutMe.Show("Prasad Honrao", "PrasadHonrao", "Honrao.Prasad@hotmail.com", "http://PrasadHonrao.com");
         }
 
-        void RecordButton_Click(object sender, EventArgs e)
+        private void RecordButton_Click(object sender, EventArgs e)
         {
             NavigationService.Navigate(new Uri("/RecordAudio.xaml", UriKind.Relative));
         }
