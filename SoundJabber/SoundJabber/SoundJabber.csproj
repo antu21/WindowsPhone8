@@ -191,6 +191,15 @@
     <Content Include="Assets\Audio\Taunts\Snore.wav" />
     <Content Include="Assets\Audio\Taunts\Wrong Price.wav" />
     <Content Include="Assets\Audio\Taunts\Yawn.wav" />
+    <Content Include="Assets\Audio\Vehicles\Bicycle Bell.wav" />
+    <Content Include="Assets\Audio\Vehicles\Car Horn.wav" />
+    <Content Include="Assets\Audio\Vehicles\Car Start.wav" />
+    <Content Include="Assets\Audio\Vehicles\Motorcycle Harley.wav" />
+    <Content Include="Assets\Audio\Vehicles\Motorcycle.wav" />
+    <Content Include="Assets\Audio\Vehicles\Old Horn.wav" />
+    <Content Include="Assets\Audio\Vehicles\Train Crossing.wav" />
+    <Content Include="Assets\Audio\Vehicles\Truck Backing Up.wav" />
+    <Content Include="Assets\Audio\Vehicles\Truck Horn.wav" />
     <Content Include="Assets\Audio\Warnings\Air horn.wav" />
     <Content Include="Assets\Audio\Warnings\Air Raid.wav" />
     <Content Include="Assets\Audio\Warnings\Alarm Clock - Bell.wav" />
@@ -255,6 +264,7 @@
       <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

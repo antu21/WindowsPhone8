@@ -30,6 +30,17 @@
         </vm:SoundGroup>
     </vm:SoundModel.Taunts>
 
+    <vm:SoundModel.Vehicles>
+        <vm:SoundGroup Title="Vehicles">
+            <vm:SoundGroup.Items>
+                <vm:SoundData Title="Vehicle 1" FilePath="Vehicle.wav" />
+                <vm:SoundData Title="Vehicle 2" FilePath="Vehicle.wav" />
+                <vm:SoundData Title="Vehicle 3" FilePath="Vehicle.wav" />
+                <vm:SoundData Title="Vehicle 4" FilePath="Vehicle.wav" />
+            </vm:SoundGroup.Items>
+        </vm:SoundGroup>
+    </vm:SoundModel.Vehicles>
+    
     <vm:SoundModel.Warnings>
         <vm:SoundGroup Title="Warnings">
             <vm:SoundGroup.Items>

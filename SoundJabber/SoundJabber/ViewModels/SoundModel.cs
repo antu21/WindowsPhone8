@@ -10,6 +10,7 @@ namespace SoundJabber.ViewModels
         public SoundGroup Warnings { get; set; }
         public SoundGroup CustomSounds { get; set; }
         public SoundGroup Taunts { get; set; }
+        public SoundGroup Vehicles { get; set; }
 
         public bool IsDataLoaded
         {
@@ -22,10 +23,74 @@ namespace SoundJabber.ViewModels
             Animals = CreateAnimalsGroup();
             Cartoons = CreateCartoonsGroup();
             Taunts = CreateTauntsGroup();
+            Vehicles = CreateVehiclesGroup();
             Warnings = CreateWarningsGroup();
             CustomSounds = LoadCustomSounds();
 
             IsDataLoaded = true;
+        }
+
+        private SoundGroup CreateVehiclesGroup()
+        {
+            SoundGroup data = new SoundGroup();
+            data.Title = "Vehicles";
+            string basePath = "assets/audio/vehicles/";
+
+            data.Items.Add(new SoundData
+            {
+                Title = "Bicycle Bell",
+                FilePath = basePath + "Bicycle Bell.wav"
+            });
+
+            data.Items.Add(new SoundData
+            {
+                Title = "Car Horn",
+                FilePath = basePath + "Car Horn.wav"
+            });
+
+            data.Items.Add(new SoundData
+            {
+                Title = "Car Start",
+                FilePath = basePath + "Car Start.wav"
+            });
+
+            data.Items.Add(new SoundData
+            {
+                Title = "Motorcycle",
+                FilePath = basePath + "Motorcycle.wav"
+            });
+
+            data.Items.Add(new SoundData
+            {
+                Title = "Motorcycle Harley",
+                FilePath = basePath + "Motorcycle Harley.wav"
+            });
+
+            data.Items.Add(new SoundData
+            {
+                Title = "Old Horn",
+                FilePath = basePath + "Old Horn.wav"
+            });
+
+            data.Items.Add(new SoundData
+            {
+                Title = "Train Crossing",
+                FilePath = basePath + "Train Crossing.wav"
+            });
+
+            data.Items.Add(new SoundData
+            {
+                Title = "Truck Backing Up",
+                FilePath = basePath + "Truck Backing Up.wav"
+            });
+
+            data.Items.Add(new SoundData
+            {
+                Title = "Truck Horn",
+                FilePath = basePath + "Truck Horn.wav"
+            });
+
+            return data;
         }
 
         private SoundGroup LoadCustomSounds()
