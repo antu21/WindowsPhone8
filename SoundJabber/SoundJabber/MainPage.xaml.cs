@@ -17,6 +17,7 @@ namespace SoundJabber
     public partial class MainPage : PhoneApplicationPage
     {
         public SoundData CurrentItem { get; set; }
+        bool canTerminateApp = false;
 
         public MainPage()
         {
@@ -25,11 +26,21 @@ namespace SoundJabber
             DataContext = App.ViewModel;
 
             BuildLocalizedApplicationBar();
+
+            AudioPlayer.MediaEnded += AudioPlayer_MediaEnded;
+        }
+
+        void AudioPlayer_MediaEnded(object sender, RoutedEventArgs e)
+        {
+            if (this.canTerminateApp)
+                Application.Current.Terminate();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             #region Play sound from Phone start screen and then navigate to specific pivot item
+
+            canTerminateApp = false;
 
             if (this.NavigationContext.QueryString.ContainsKey("audioFile"))
             {
@@ -39,6 +50,7 @@ namespace SoundJabber
                 {
                     AudioPlayer.Source = new Uri(soundFile, UriKind.RelativeOrAbsolute);
                     AudioPlayer.Play();
+                    canTerminateApp = true;
                 }
                 else
                 {
@@ -141,7 +153,7 @@ namespace SoundJabber
         private void AboutMenuItem_Click(object sender, EventArgs e)
         {
             AboutPrompt aboutMe = new AboutPrompt();
-            aboutMe.Show("Prasad Honrao", "PrasadHonrao", "Honrao.Prasad@hotmail.com", "http://PrasadHonrao.com");
+            aboutMe.Show("Prasad Honrao", "PrasadHonrao", websiteUrl: "http://PrasadHonrao.com");
         }
 
         private void RecordButton_Click(object sender, EventArgs e)
@@ -160,10 +172,15 @@ namespace SoundJabber
             //standardTileData.BackContent = AppResources.ApplicationTitle;
             //standardTileData.BackBackgroundImage = null;
 
-            IconicTileData iconTileData = new IconicTileData();
-            iconTileData.IconImage = new Uri("/Assets/ApplicationIcon.png", UriKind.RelativeOrAbsolute);
-            iconTileData.SmallIconImage = new Uri("/Assets/ApplicationIcon.png", UriKind.RelativeOrAbsolute);
-            iconTileData.Title = data.Title;
+            IconicTileData tile = new IconicTileData();
+            tile.IconImage = new Uri("/Assets/ApplicationIcon.png", UriKind.RelativeOrAbsolute);
+            tile.SmallIconImage = new Uri("/Assets/ApplicationIcon.png", UriKind.RelativeOrAbsolute);
+            tile.Title = data.Title;
+
+            //FlipTileData tile = new FlipTileData();
+            //tile.BackContent = data.Title;
+            //tile.BackgroundImage = new Uri("/Assets/ApplicationIcon.png", UriKind.RelativeOrAbsolute);
+            //tile.Title = data.Title;
 
             var navUrl = "/MainPage.xaml?audioFile=" + data.FilePath + "&pivotItemIndex=" + Pivot.SelectedIndex;
 
@@ -173,7 +190,7 @@ namespace SoundJabber
 
             if (tiletopin == null)
             {
-                ShellTile.Create(u, iconTileData, false);
+                ShellTile.Create(u, tile, false);
             }
             else
             {
