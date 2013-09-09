@@ -103,10 +103,21 @@ namespace SoundJabber
             }
             #endregion
 
+            #region Custom sound name validation - Length
+            if (customSound.Title.Length > 10)
+            {
+                response.IsValid = false;
+                response.Message = "Custom sound name length cannot be more than 10 characters";
+                return response;
+            }
+            #endregion
+
             #region Special character handling in Sound Title
             foreach (char c in customSound.Title)
             {
-                if (!Char.IsLetterOrDigit(c))
+                if (Char.IsWhiteSpace(c))
+                    continue;
+                else if (!Char.IsLetterOrDigit(c))
                 {
                     response.IsValid = false;
                     response.Message = "Special characters are not allowed in custom sound name";
