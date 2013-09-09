@@ -172,15 +172,16 @@ namespace SoundJabber
             //standardTileData.BackContent = AppResources.ApplicationTitle;
             //standardTileData.BackBackgroundImage = null;
 
-            IconicTileData tile = new IconicTileData();
-            tile.IconImage = new Uri("/Assets/ApplicationIcon.png", UriKind.RelativeOrAbsolute);
-            tile.SmallIconImage = new Uri("/Assets/ApplicationIcon.png", UriKind.RelativeOrAbsolute);
-            tile.Title = data.Title;
-
-            //FlipTileData tile = new FlipTileData();
-            //tile.BackContent = data.Title;
-            //tile.BackgroundImage = new Uri("/Assets/ApplicationIcon.png", UriKind.RelativeOrAbsolute);
+            //IconicTileData tile = new IconicTileData();
+            //tile.IconImage = new Uri("/Assets/Tiles/TileImageMedium.png", UriKind.RelativeOrAbsolute);
+            //tile.SmallIconImage = new Uri("/Assets/Tiles/TileImageSmall.png", UriKind.RelativeOrAbsolute);
             //tile.Title = data.Title;
+
+            FlipTileData tile = new FlipTileData();
+            tile.BackContent = data.Title;
+            tile.BackgroundImage = new Uri("/Assets/Tiles/TileImageMedium.png", UriKind.RelativeOrAbsolute);
+            tile.SmallBackgroundImage = new Uri("/Assets/Tiles/TileImageSmall.png", UriKind.RelativeOrAbsolute);
+            tile.Title = data.Title;
 
             var navUrl = "/MainPage.xaml?audioFile=" + data.FilePath + "&pivotItemIndex=" + Pivot.SelectedIndex;
 

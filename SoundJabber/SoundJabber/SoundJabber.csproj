@@ -212,8 +212,8 @@
     <Content Include="Assets\Audio\Warnings\Police - UK.wav" />
     <Content Include="Assets\Audio\Warnings\Police - US.wav" />
     <Content Include="Assets\Audio\Warnings\Vuvuzela.wav" />
-    <Content Include="Assets\Tiles\sound - medium.png" />
-    <Content Include="Assets\Tiles\sound - small.png" />
+    <Content Include="Assets\Tiles\TileImageSmall.png" />
+    <Content Include="Assets\Tiles\TileImageMedium.png" />
     <Content Include="ReadMe.Coding4Fun.Toolkit.txt" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
