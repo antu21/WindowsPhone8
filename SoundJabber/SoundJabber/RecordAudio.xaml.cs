@@ -95,7 +95,7 @@ namespace SoundJabber
             var response = new ValidateCustomSoundResponse { IsValid = true, Message = "Valid sound" };
 
             #region Custom sound name validation - Empty string
-            if (customSound.Title.Length == 0)
+            if (customSound.Title.Trim().Length == 0)
             {
                 response.IsValid = false;
                 response.Message = "Custom sound name cannot be empty";
