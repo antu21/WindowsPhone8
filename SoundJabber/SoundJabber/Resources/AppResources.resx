@@ -143,4 +143,10 @@
   <data name="AppBarSaveButtonText" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="StartRecordingText" xml:space="preserve">
+    <value>Start Recording</value>
+  </data>
+  <data name="StopRecordingText" xml:space="preserve">
+    <value>Stop Recording</value>
+  </data>
 </root>

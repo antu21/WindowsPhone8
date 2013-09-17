@@ -23,6 +23,7 @@ namespace SoundJabber
             InitializeComponent();
             BuildLocalizedApplicationBar();
             recorder = new MicrophoneRecorder();
+            RecordToggleButton.Content = AppResources.StartRecordingText;
         }
 
         private void BuildLocalizedApplicationBar()
@@ -38,7 +39,7 @@ namespace SoundJabber
             ApplicationBar.IsVisible = false;
         }
 
-        void SaveButton_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
             InputPrompt prompt = new InputPrompt();
             prompt.Message = "Enter the sound name";
@@ -47,7 +48,7 @@ namespace SoundJabber
             prompt.Show();
         }
 
-        void Prompt_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
+        private void Prompt_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
             if (e.PopUpResult == PopUpResult.Ok)
             {
@@ -169,20 +170,19 @@ namespace SoundJabber
             PlayAudioButton.IsEnabled = false;
             ApplicationBar.IsVisible = false;
             RotateAudioGrid.Begin();
-
             recorder.Start();
+            RecordToggleButton.Content = AppResources.StopRecordingText;
         }
 
         private void RecordToggleButton_Unchecked(object sender, System.Windows.RoutedEventArgs e)
         {
             recorder.Stop();
-
             RotateAudioGrid.Stop();
-
             SaveAudioFile(recorder.Buffer);
 
             PlayAudioButton.IsEnabled = true;
             ApplicationBar.IsVisible = true;
+            RecordToggleButton.Content = AppResources.StartRecordingText;
         }
 
         private void SaveAudioFile(System.IO.MemoryStream buffer)

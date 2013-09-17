@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SoundJabber.Resources
-{
-
-
+namespace SoundJabber.Resources {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -129,6 +129,24 @@ namespace SoundJabber.Resources
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Recording.
+        /// </summary>
+        public static string StartRecordingText {
+            get {
+                return ResourceManager.GetString("StartRecordingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop Recording.
+        /// </summary>
+        public static string StopRecordingText {
+            get {
+                return ResourceManager.GetString("StopRecordingText", resourceCulture);
             }
         }
     }

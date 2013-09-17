@@ -48,8 +48,7 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <MediaElement Name="AudioPlayer" AutoPlay="False" />
             <StackPanel>
-                <ToggleButton Content="Record" 
-                              Name="RecordToggleButton"
+                <ToggleButton Name="RecordToggleButton"
                               Checked="RecordToggleButton_Checked"
                               Unchecked="RecordToggleButton_Unchecked"
                               />
