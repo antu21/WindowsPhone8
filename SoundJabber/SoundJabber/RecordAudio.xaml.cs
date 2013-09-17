@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using SoundJabber.Resources;
 using SoundJabber.ViewModels;
 using System;
+using System.IO;
 using System.IO.IsolatedStorage;
 using System.Windows.Navigation;
 
@@ -93,13 +94,13 @@ namespace SoundJabber
 
         private ValidateCustomSoundResponse ValidateCustomSound(SoundData customSound)
         {
-            var response = new ValidateCustomSoundResponse { IsValid = true, Message = "Valid sound" };
+            var response = new ValidateCustomSoundResponse { IsValid = true, Message = SoundValidation.ValidSoundMessage };
 
             #region Custom sound name validation - Empty string
             if (customSound.Title.Trim().Length == 0)
             {
                 response.IsValid = false;
-                response.Message = "Custom sound name cannot be empty";
+                response.Message = SoundValidation.EmptySoundMessage;
                 return response;
             }
             #endregion
@@ -108,7 +109,7 @@ namespace SoundJabber
             if (customSound.Title.Length > 10)
             {
                 response.IsValid = false;
-                response.Message = "Custom sound name length cannot be more than 10 characters";
+                response.Message = SoundValidation.InvalidLengthSoundMessage;
                 return response;
             }
             #endregion
@@ -121,7 +122,7 @@ namespace SoundJabber
                 else if (!Char.IsLetterOrDigit(c))
                 {
                     response.IsValid = false;
-                    response.Message = "Special characters are not allowed in custom sound name";
+                    response.Message = SoundValidation.SpecialCharacterSoundMessage;
                     return response;
                 }
             }
@@ -142,7 +143,7 @@ namespace SoundJabber
                     if (customSound.Title.Equals(item.Title))
                     {
                         response.IsValid = false;
-                        response.Message = "Custom sound with same name already exists. Please input different name.";
+                        response.Message = SoundValidation.DuplicateCustomSoundMessage;
                         return response;
                     }
                 }
@@ -155,7 +156,7 @@ namespace SoundJabber
                 if (tempFile.Length > isoStore.AvailableFreeSpace)
                 {
                     response.IsValid = false;
-                    response.Message = "Not enough space available to store custom sounds. Please delete existing custom sounds and try again.";
+                    response.Message = SoundValidation.StorageErrorSoundMessage;
                     return response;
                 }
             }
@@ -185,11 +186,11 @@ namespace SoundJabber
             RecordToggleButton.Content = AppResources.StartRecordingText;
         }
 
-        private void SaveAudioFile(System.IO.MemoryStream buffer)
+        private void SaveAudioFile(MemoryStream buffer)
         {
             if (buffer == null)
             {
-                throw new ArgumentNullException("No sound to save");
+                throw new ArgumentNullException(SoundValidation.NoSoundToSaveMessage);
             }
 
             if (audioStream != null)

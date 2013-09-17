@@ -114,6 +114,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\SoundValidation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SoundValidation.resx</DependentUpon>
+    </Compile>
     <Compile Include="ValidateCustomSoundResponse.cs" />
     <Compile Include="ViewModels\SoundData.cs" />
     <Compile Include="ViewModels\SoundGroup.cs" />
@@ -226,6 +231,10 @@
     <EmbeddedResource Include="Resources\AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\SoundValidation.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SoundValidation.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
