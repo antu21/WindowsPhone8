@@ -145,15 +145,16 @@ namespace SoundJabber
             ApplicationBar.Buttons.Add(recordButton);
 
             // Create a new menu item with the localized string from AppResources.
-            ApplicationBarMenuItem aboutMenuItem = new ApplicationBarMenuItem(AppResources.AppBarAboutMenuItemText);
-            aboutMenuItem.Click += AboutMenuItem_Click;
-            ApplicationBar.MenuItems.Add(aboutMenuItem);
+            ApplicationBarMenuItem aboutMeMenuItem = new ApplicationBarMenuItem(AppResources.AppBarAboutMeMenuItemText);
+            aboutMeMenuItem.Click += AboutMeMenuItem_Click;
+            ApplicationBar.MenuItems.Add(aboutMeMenuItem);
         }
 
-        private void AboutMenuItem_Click(object sender, EventArgs e)
+        private void AboutMeMenuItem_Click(object sender, EventArgs e)
         {
-            AboutPrompt aboutMe = new AboutPrompt();
-            aboutMe.Show("Prasad Honrao", "PrasadHonrao", websiteUrl: "http://PrasadHonrao.com");
+            //AboutPrompt aboutMe = new AboutPrompt();
+            //aboutMe.Show("Prasad Honrao", "PrasadHonrao", websiteUrl: "http://PrasadHonrao.com");`
+            NavigationService.Navigate(new Uri("/AboutMePage.xaml", UriKind.Relative));
         }
 
         private void RecordButton_Click(object sender, EventArgs e)

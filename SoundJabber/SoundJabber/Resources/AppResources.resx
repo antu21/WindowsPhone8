@@ -131,11 +131,8 @@
   <data name="AppBarButtonText" xml:space="preserve">
     <value>add</value>
   </data>
-  <data name="AppBarMenuItemText" xml:space="preserve">
-    <value>Menu Item</value>
-  </data>
-  <data name="AppBarAboutMenuItemText" xml:space="preserve">
-    <value>About</value>
+  <data name="AppBarAboutMeMenuItemText" xml:space="preserve">
+    <value>About Me</value>
   </data>
   <data name="AppBarRecordButtonText" xml:space="preserve">
     <value>Record</value>
@@ -148,5 +145,8 @@
   </data>
   <data name="StopRecordingText" xml:space="preserve">
     <value>Stop Recording</value>
+  </data>
+  <data name="AboutMePageTitle" xml:space="preserve">
+    <value>About Me</value>
   </data>
 </root>

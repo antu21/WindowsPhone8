@@ -50,7 +50,7 @@
         <MediaElement Name="AudioPlayer" Volume="1"/>
 
         <!--Pivot Control-->
-        <phone:Pivot x:Name="Pivot"  Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}" >
+        <phone:Pivot x:Name="Pivot"  Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}">
 
             <phone:PivotItem Header="Animals">
                 <!--Double line list with text wrapping-->

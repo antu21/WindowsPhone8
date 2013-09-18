@@ -61,11 +61,20 @@ namespace SoundJabber.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to About Me.
         /// </summary>
-        public static string AppBarAboutMenuItemText {
+        public static string AboutMePageTitle {
             get {
-                return ResourceManager.GetString("AppBarAboutMenuItemText", resourceCulture);
+                return ResourceManager.GetString("AboutMePageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About Me.
+        /// </summary>
+        public static string AppBarAboutMeMenuItemText {
+            get {
+                return ResourceManager.GetString("AppBarAboutMeMenuItemText", resourceCulture);
             }
         }
         
@@ -75,15 +84,6 @@ namespace SoundJabber.Resources {
         public static string AppBarButtonText {
             get {
                 return ResourceManager.GetString("AppBarButtonText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Menu Item.
-        /// </summary>
-        public static string AppBarMenuItemText {
-            get {
-                return ResourceManager.GetString("AppBarMenuItemText", resourceCulture);
             }
         }
         
