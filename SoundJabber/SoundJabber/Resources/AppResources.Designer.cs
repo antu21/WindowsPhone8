@@ -61,25 +61,25 @@ namespace SoundJabber.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About Me.
+        ///   Looks up a localized string similar to About Author.
         /// </summary>
-        public static string AboutMePageTitle {
+        public static string AboutAuthorPageTitle {
             get {
-                return ResourceManager.GetString("AboutMePageTitle", resourceCulture);
+                return ResourceManager.GetString("AboutAuthorPageTitle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About Me.
+        ///   Looks up a localized string similar to About Author.
         /// </summary>
-        public static string AppBarAboutMeMenuItemText {
+        public static string AppBarAboutAuthorMenuItemText {
             get {
-                return ResourceManager.GetString("AppBarAboutMeMenuItemText", resourceCulture);
+                return ResourceManager.GetString("AppBarAboutAuthorMenuItemText", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to add.
+        ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string AppBarButtonText {
             get {
@@ -129,6 +129,15 @@ namespace SoundJabber.Resources {
         public static string ResourceLanguage {
             get {
                 return ResourceManager.GetString("ResourceLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string SettingsPageTitle {
+            get {
+                return ResourceManager.GetString("SettingsPageTitle", resourceCulture);
             }
         }
         

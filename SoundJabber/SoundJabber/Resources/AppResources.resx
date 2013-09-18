@@ -129,10 +129,10 @@
     <value>Sound Jabber</value>
   </data>
   <data name="AppBarButtonText" xml:space="preserve">
-    <value>add</value>
+    <value>Add</value>
   </data>
-  <data name="AppBarAboutMeMenuItemText" xml:space="preserve">
-    <value>About Me</value>
+  <data name="AppBarAboutAuthorMenuItemText" xml:space="preserve">
+    <value>About Author</value>
   </data>
   <data name="AppBarRecordButtonText" xml:space="preserve">
     <value>Record</value>
@@ -146,7 +146,10 @@
   <data name="StopRecordingText" xml:space="preserve">
     <value>Stop Recording</value>
   </data>
-  <data name="AboutMePageTitle" xml:space="preserve">
-    <value>About Me</value>
+  <data name="AboutAuthorPageTitle" xml:space="preserve">
+    <value>About Author</value>
+  </data>
+  <data name="SettingsPageTitle" xml:space="preserve">
+    <value>Settings</value>
   </data>
 </root>

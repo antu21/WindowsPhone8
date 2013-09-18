@@ -94,8 +94,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AboutMePage.xaml.cs">
-      <DependentUpon>AboutMePage.xaml</DependentUpon>
+    <Compile Include="AboutAuthorPage.xaml.cs">
+      <DependentUpon>AboutAuthorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -122,6 +122,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SoundValidation.resx</DependentUpon>
     </Compile>
+    <Compile Include="SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ValidateCustomSoundResponse.cs" />
     <Compile Include="ViewModels\SoundData.cs" />
     <Compile Include="ViewModels\SoundGroup.cs" />
@@ -132,7 +135,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
-    <Page Include="AboutMePage.xaml">
+    <Page Include="AboutAuthorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -151,6 +154,10 @@
     <Page Include="SampleData\SoundModelSampleData.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +245,7 @@
     <EmbeddedResource Include="Resources\AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\SoundValidation.resx">
       <Generator>ResXFileCodeGenerator</Generator>

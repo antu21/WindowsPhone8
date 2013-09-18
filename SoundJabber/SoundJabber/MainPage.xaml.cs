@@ -144,17 +144,25 @@ namespace SoundJabber
             recordButton.Click += RecordButton_Click;
             ApplicationBar.Buttons.Add(recordButton);
 
-            // Create a new menu item with the localized string from AppResources.
-            ApplicationBarMenuItem aboutMeMenuItem = new ApplicationBarMenuItem(AppResources.AppBarAboutMeMenuItemText);
-            aboutMeMenuItem.Click += AboutMeMenuItem_Click;
-            ApplicationBar.MenuItems.Add(aboutMeMenuItem);
+            ApplicationBarMenuItem settingsMenuItem = new ApplicationBarMenuItem(AppResources.SettingsPageTitle);
+            settingsMenuItem.Click += SettingsMenuItem_Click;
+            ApplicationBar.MenuItems.Add(settingsMenuItem);
+
+            ApplicationBarMenuItem aboutAuthorMenuItem = new ApplicationBarMenuItem(AppResources.AppBarAboutAuthorMenuItemText);
+            aboutAuthorMenuItem.Click += AboutAuthorMenuItem_Click;
+            ApplicationBar.MenuItems.Add(aboutAuthorMenuItem);
         }
 
-        private void AboutMeMenuItem_Click(object sender, EventArgs e)
+        private void AboutAuthorMenuItem_Click(object sender, EventArgs e)
         {
             //AboutPrompt aboutMe = new AboutPrompt();
             //aboutMe.Show("Prasad Honrao", "PrasadHonrao", websiteUrl: "http://PrasadHonrao.com");`
-            NavigationService.Navigate(new Uri("/AboutMePage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/AboutAuthorPage.xaml", UriKind.Relative));
+        }
+
+        private void SettingsMenuItem_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/SettingsPage.xaml", UriKind.Relative));
         }
 
         private void RecordButton_Click(object sender, EventArgs e)

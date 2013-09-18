@@ -10,9 +10,9 @@ using Microsoft.Phone.Shell;
 
 namespace SoundJabber
 {
-    public partial class AboutMePage : PhoneApplicationPage
+    public partial class SettingsPage : PhoneApplicationPage
     {
-        public AboutMePage()
+        public SettingsPage()
         {
             InitializeComponent();
         }
