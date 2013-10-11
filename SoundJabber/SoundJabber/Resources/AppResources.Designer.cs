@@ -115,6 +115,129 @@ namespace SoundJabber.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [Your feedback here]
+        ///
+        ///
+        ///---------------------------------
+        ///Device Name: {0}
+        ///Device Manufacturer: {1}
+        ///Device Firmware Version: {2}
+        ///Device Hardware Version: {3}
+        ///Application Version: {4}
+        ///---------------------------------.
+        /// </summary>
+        public static string FeedbackBody {
+            get {
+                return ResourceManager.GetString("FeedbackBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry to hear you didn&apos;t want to rate MyApp.
+        ///
+        ///Tell us about your experience or suggest how we can make it even better..
+        /// </summary>
+        public static string FeedbackMessage1 {
+            get {
+                return ResourceManager.GetString("FeedbackMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no thanks.
+        /// </summary>
+        public static string FeedbackNo {
+            get {
+                return ResourceManager.GetString("FeedbackNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sound Jabber Customer Feedback .
+        /// </summary>
+        public static string FeedbackSubject {
+            get {
+                return ResourceManager.GetString("FeedbackSubject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Can we make it better?.
+        /// </summary>
+        public static string FeedbackTitle {
+            get {
+                return ResourceManager.GetString("FeedbackTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Honrao.Prasad@Gmail.com.
+        /// </summary>
+        public static string FeedbackTo {
+            get {
+                return ResourceManager.GetString("FeedbackTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to give feedback.
+        /// </summary>
+        public static string FeedbackYes {
+            get {
+                return ResourceManager.GetString("FeedbackYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We&apos;d love you to rate our app 5 stars
+        ///
+        ///Showing us some love on the store helps us to continue to work on the app and make things even better!.
+        /// </summary>
+        public static string RatingMessage1 {
+            get {
+                return ResourceManager.GetString("RatingMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You look to be getting a lot of use out of our application!
+        ///
+        ///Why not give us a 5 star rating to show your appreciation?.
+        /// </summary>
+        public static string RatingMessage2 {
+            get {
+                return ResourceManager.GetString("RatingMessage2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to no thanks.
+        /// </summary>
+        public static string RatingNo {
+            get {
+                return ResourceManager.GetString("RatingNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enjoying MyApp?.
+        /// </summary>
+        public static string RatingTitle {
+            get {
+                return ResourceManager.GetString("RatingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rate 5 stars.
+        /// </summary>
+        public static string RatingYes {
+            get {
+                return ResourceManager.GetString("RatingYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to LeftToRight.
         /// </summary>
         public static string ResourceFlowDirection {
@@ -138,6 +261,15 @@ namespace SoundJabber.Resources {
         public static string SettingsPageTitle {
             get {
                 return ResourceManager.GetString("SettingsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to start page.
+        /// </summary>
+        public static string StartPageTitle {
+            get {
+                return ResourceManager.GetString("StartPageTitle", resourceCulture);
             }
         }
         

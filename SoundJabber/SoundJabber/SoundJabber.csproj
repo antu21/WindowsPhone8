@@ -101,6 +101,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants.cs" />
+    <Compile Include="Controls\FeedbackOverlay.xaml.cs">
+      <DependentUpon>FeedbackOverlay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\FeedbackHelper.cs" />
+    <Compile Include="Helpers\StorageHelper.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -138,6 +143,10 @@
     <Page Include="AboutAuthorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FeedbackOverlay.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
