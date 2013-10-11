@@ -58,7 +58,7 @@ namespace NokiaFeedbackDemo.Helpers
                 this.LoadState();
 
             // Uncomment for testing
-            this._state = FeedbackState.FirstReview;
+            //this._state = FeedbackState.FirstReview;
             //this._state = FeedbackState.SecondReview;
         }
 

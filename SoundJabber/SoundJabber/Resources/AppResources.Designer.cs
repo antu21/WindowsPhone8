@@ -220,7 +220,7 @@ namespace SoundJabber.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enjoying MyApp?.
+        ///   Looks up a localized string similar to Enjoying Sound Jabber?.
         /// </summary>
         public static string RatingTitle {
             get {
